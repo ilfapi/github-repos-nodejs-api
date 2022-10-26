@@ -20,7 +20,7 @@ var allowCrossDomain = function(req, res, next) {
 };
 
 app.use(allowCrossDomain);
-app.use(app.router);
+// app.use(app.router);
 
 app.get('/', (req, res) => {
   // res.header('Access-Control-Allow-Origin', '*');
