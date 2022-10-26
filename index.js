@@ -1,7 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 8081;
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.status(200).send(`API is built by ILF Football</br>`);
@@ -21,7 +23,7 @@ app.get('/api', (req, res) => {
       result: JSON.stringify(response.data)
     });
   }).catch(function (error) {
-    res.status(400).send(error);
+    res.status(400).send({result: error});
   });
 });
 
