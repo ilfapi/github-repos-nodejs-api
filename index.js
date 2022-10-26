@@ -23,16 +23,10 @@ app.use(allowCrossDomain);
 // app.use(app.router);
 
 app.get('/', (req, res) => {
-  // res.header('Access-Control-Allow-Origin', '*');
-  // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  // res.header('Access-Control-Allow-Headers', 'X-Requested-With, Accept, Origin, Referer, User-Agent, Content-Type, Authorization');
   res.status(200).send(`API is built by ILF Football</br>`);
 });
 
-app.get('/api', (req, res) => {
-  // res.header('Access-Control-Allow-Origin', '*');
-  // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  // res.header('Access-Control-Allow-Headers', 'X-Requested-With, Accept, Origin, Referer, User-Agent, Content-Type, Authorization');
+app.get('/api/competitions/PL/', (req, res) => {
   var config = {
     method: 'get',
     url: 'https://api.football-data.org/v4/competitions/PL/',
@@ -42,9 +36,7 @@ app.get('/api', (req, res) => {
   };
 
   axios(config).then(function (response) {
-    res.status(200).send({
-      result: JSON.stringify(response.data)
-    });
+    res.status(200).send(response.data);
   }).catch(function (error) {
     res.status(400).send({result: error});
   });
